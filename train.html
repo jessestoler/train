@@ -1,106 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="train.css" rel="stylesheet" type="text/css"> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-    #add {border: 2px solid blue;
-        margin-top: 25px;
-        padding-bottom: 15px;
-       }
-
-    #add h3 {margin-left: 15px;}
-    
-    body {padding-left: 40px;
-            padding-right: 40px;}
-    
-    button {margin-left: 15px;
-            margin-top: 15px;}
-
-    #current {border: 2px solid blue;
-        margin-top: 25px;
-        padding-bottom: 15px;}
-
-    #header {background-color: brown;
-            color: white;
-            height: 200px;
-            line-height: 200px;
-            margin: 0 auto;
-            text-align: center;}
-
-    input {height: 140%;
-        margin-left: 15px;
-        width: 90%; }
-
-    .label {background-color: blue;
-            color: white;
-            height: 25px;
-            line-height: 25px;
-            position: relative;
-            top: -23px;
-            width: 100%;}
-    table {margin: 0 auto;}
-    td {border-top: 1px solid blue;}
-    tr {height: 25px;;}
-
-    </style>
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script type="text/javascript" src="train.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <title>Train Schedule</title>
 </head>
 <body>
     <div id="wrapper">
         <div id="header">
             <h3>Train Schedule</h3>
+            <p id="ultraviolence"></p>
+            
+
         </div>
         <div id="current">
             <div class="label">
                 <h5>Current Train Schedule</h5>
             </div>
-            <table>
-                <tr>
-                    <th>Train Name</th>
-                    <th>Destination</th>
-                    <th>Frequency (min)</th>
-                    <th>Next Arrival</th>
-                    <th>Minutes Away</th>
-                </tr>
-                <tr>
-                    <td>Trenton Express</td>
-                    <td>Trenton</td>
-                    <td>25</td>
-                    <td>05:35 PM</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>Oregon Trail</td>
-                    <td>Salem, Oregon</td>
-                    <td>3600</td>
-                    <td>01:39 PM</td>
-                    <td>1154</td>
-                </tr>
-                <tr>
-                    <td>Midnight Carriage</td>
-                    <td>Philadelphia</td>
-                    <td>15</td>
-                    <td>05:35 PM</td>
-                    <td>10</td>
-                </tr>
-            </table>
+            <div class="row">
+                <div class="col-1">
+
+                </div>
+                <div class="col-2" id="funny">
+                    <div class="info row">
+                        
+                            <h4>Train Name</h4>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>Trenton Express</p>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>Oregon Trail</p>
+                        
+                    </div>
+                    <div class="info row">
+                       
+                            <p>Midnight Carriage</p>
+                        
+                    </div>
+            </div>
+                <div class="col-2" id="piano">
+                    <div class="info row">
+                        
+                            <h4>Destination</h4>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>Trenton</p>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>Salem, Oregon</p>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>Philadelphia</p>
+                        
+                    </div>
+                </div>
+                <div class="col-2" id="cache">
+                    <div class="info row">
+                       
+                            <h4>Frequency (min)</h4>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>25</p>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>3600</p>
+                       
+                    </div>
+                    <div class="info row">
+                        
+                            <p>15</p>
+                       
+                    </div>    
+                </div>
+                <div class="col-2" id="white">
+                    <div class="info row">
+                        
+                            <h4>Next Arrival</h4>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>05:35 PM</p>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>01:39 PM</p>
+                       
+                    </div>
+                    <div class="info row">
+                        
+                            <p>05:35 PM</p>
+                       
+                    </div>            
+                </div>
+                <div class="col-2" id="amour">
+                    <div class="info row">
+                        
+                            <h4>Minutes Away</h4>
+                        
+                    </div>
+                    <div class="info row">
+                       
+                            <p>10</p>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>1154</p>
+                        
+                    </div>
+                    <div class="info row">
+                        
+                            <p>10</p>
+                        
+                    </div>         
+                </div>
+                <div class="col-1">
+
+                </div>
+            </div>
         </div>
         <div id="add">
             <div class="label">
                 <h5>Add Train</h5>
             </div>
             <h3>Train Name</h3>
-            <input type="text">
+            <input id="trainName" type="text">
             <h3>Destination</h3>
-            <input type="text">
+            <input id="destination" type="text">
             <h3>First Train Time</h3>
-            <input type="text">
+            <div class="row">
+                <div class="col-4">
+                        <button id="day">Day &#9660;</button>
+                        <input id="dayInput" type"text">
+                        <ul id="dayOptions">
+                        <li class="seven" id="dayOne"></li>
+                        <li class="seven" id="dayTwo"></li>
+                        <li class="seven" id="dayThree"></li>
+                        <li class="seven" id="dayFour"></li>
+                        <li class="seven" id="dayFive"></li>
+                        <li class="seven" id="daySix"></li>
+                        <li class="seven" id="daySeven"></li>
+                                                
+                        </ul>
+                                        
+                </div>
+
+                <div class="col-4">
+                        <button id="hour">Hour &#9660;</button>
+                        <input id="hourInput" type"text">
+                        <ul id="hourOptions">
+                                <li class="twentyfour" data-option="01">01</li>
+                                <li class="twentyfour" data-option="02">02</li>
+                                <li class="twentyfour" data-option="03">03</li>
+                                <li class="twentyfour" data-option="04">04</li>
+                                <li class="twentyfour" data-option="05">05</li>
+                                <li class="twentyfour" data-option="06">06</li>
+                                <li class="twentyfour" data-option="07">07</li>
+                                <li class="twentyfour" data-option="08">08</li>
+                                <li class="twentyfour" data-option="09">09</li>
+                                <li class="twentyfour" data-option="10">10</li>
+                                <li class="twentyfour" data-option="11">11</li>
+                                <li class="twentyfour" data-option="12">12</li>
+                                <li class="twentyfour" data-option="13">13</li>
+                                <li class="twentyfour" data-option="14">14</li>
+                                <li class="twentyfour" data-option="15">15</li>
+                                <li class="twentyfour" data-option="16">16</li>
+                                <li class="twentyfour" data-option="17">17</li>
+                                <li class="twentyfour" data-option="18">18</li>
+                                <li class="twentyfour" data-option="19">19</li>
+                                <li class="twentyfour" data-option="20">20</li>
+                                <li class="twentyfour" data-option="21">21</li>
+                                <li class="twentyfour" data-option="22">22</li>
+                                <li class="twentyfour" data-option="23">23</li>
+                                <li class="twentyfour" data-option="24">24</li>
+                        </ul>
+                        
+                </div>
+                <div class="col-4">
+                        <button id="minute">Minute &#9660;</button>
+                        <input id="minuteInput" type"text">
+                        <ul id="minuteOptions">
+                                <li class="sixty" data-option="00">00</li>
+                                <li class="sixty" data-option="01">01</li>
+                                <li class="sixty" data-option="02">02</li>
+                                <li class="sixty" data-option="03">03</li>
+                                <li class="sixty" data-option="04">04</li>
+                                <li class="sixty" data-option="05">05</li>
+                                <li class="sixty" data-option="06">06</li>
+                                <li class="sixty" data-option="07">07</li>
+                                <li class="sixty" data-option="08">08</li>
+                                <li class="sixty" data-option="09">09</li>
+                                <li class="sixty" data-option="10">10</li>
+                                <li class="sixty" data-option="11">11</li>
+                                <li class="sixty" data-option="12">12</li>
+                                <li class="sixty" data-option="13">13</li>
+                                <li class="sixty" data-option="14">14</li>
+                                <li class="sixty" data-option="15">15</li>
+                                <li class="sixty" data-option="16">16</li>
+                                <li class="sixty" data-option="17">17</li>
+                                <li class="sixty" data-option="18">18</li>
+                                <li class="sixty" data-option="19">19</li>
+                                <li class="sixty" data-option="20">20</li>
+                                <li class="sixty" data-option="21">21</li>
+                                <li class="sixty" data-option="22">22</li>
+                                <li class="sixty" data-option="23">23</li>
+                                <li class="sixty" data-option="24">24</li>
+                                <li class="sixty" data-option="25">25</li>
+                                <li class="sixty" data-option="26">26</li>
+                                <li class="sixty" data-option="27">27</li>
+                                <li class="sixty" data-option="28">28</li>
+                                <li class="sixty" data-option="29">29</li>
+                                <li class="sixty" data-option="30">30</li>
+                                <li class="sixty" data-option="31">31</li>
+                                <li class="sixty" data-option="32">32</li>
+                                <li class="sixty" data-option="33">33</li>
+                                <li class="sixty" data-option="34">34</li>
+                                <li class="sixty" data-option="35">35</li>
+                                <li class="sixty" data-option="36">36</li>
+                                <li class="sixty" data-option="37">37</li>
+                                <li class="sixty" data-option="38">38</li>
+                                <li class="sixty" data-option="39">39</li>
+                                <li class="sixty" data-option="40">40</li>
+                                <li class="sixty" data-option="41">41</li>
+                                <li class="sixty" data-option="42">42</li>
+                                <li class="sixty" data-option="43">43</li>
+                                <li class="sixty" data-option="44">44</li>
+                                <li class="sixty" data-option="45">45</li>
+                                <li class="sixty" data-option="46">46</li>
+                                <li class="sixty" data-option="47">47</li>
+                                <li class="sixty" data-option="48">48</li>
+                                <li class="sixty" data-option="49">49</li>
+                                <li class="sixty" data-option="50">50</li>
+                                <li class="sixty" data-option="51">51</li>
+                                <li class="sixty" data-option="52">52</li>
+                                <li class="sixty" data-option="53">53</li>
+                                <li class="sixty" data-option="54">54</li>
+                                <li class="sixty" data-option="55">55</li>
+                                <li class="sixty" data-option="56">56</li>
+                                <li class="sixty" data-option="57">57</li>
+                                <li class="sixty" data-option="58">58</li>
+                                <li class="sixty" data-option="59">59</li>
+                                
+                        </ul>
+                        
+                </div>
+
+                
+            </div>
+            
+            
             <h3>Frequency (min)</h3>
-            <input type="text"><br>
-            <button type="submit">Submit</button>
+            <input id="frequency" type="text"><br>
+            <button id="done" type="submit">Submit</button>
+            
         </div>
+        
     </div>
+   
+    
+           
+   
 </body>
 </html>

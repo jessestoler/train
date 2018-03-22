@@ -1,0 +1,70 @@
+#add {border: 2px solid blue;
+    margin-top: 25px;
+    padding-bottom: 15px;}
+
+#add h3 {margin-left: 15px;}
+
+body {  padding-bottom: 25px;
+        padding-left: 40px;
+        padding-right: 40px;}
+
+button {margin-left: 15px;
+        margin-top: 15px;}
+
+
+#current {border: 2px solid blue;
+    margin-top: 25px;
+    padding-bottom: 15px;}
+
+#dayInput {height: 35px;
+        font-size: 50%;
+        width: 95px;}
+
+#dayOptions {display: none;
+        list-style: none;}
+
+#header {background-color: brown;
+        color: white;
+        height: 200px;
+        
+        margin: 0 auto;
+        padding-top: 75px;
+        text-align: center;}
+
+#hourInput {height: 35px;
+        width: 35px;}
+
+#hourOptions {display: none;
+        list-style: none;}
+                
+
+.info {height: 100px;}
+
+input {height: 140%;
+    margin-left: 15px;
+    width: 90%; }
+
+.label {background-color: blue;
+        color: white;
+        height: 35px;
+        line-height: 35px;
+        padding-left: 5px;
+        position: relative;
+        top: -23px;
+        width: 100%;}
+
+li {font-size: 80%;}
+
+#meridiemInput {height: 35px;
+        width: 35px;}
+
+#meridiemOptions {display: none;
+        list-style: none;}
+
+#minuteInput {height: 35px;
+        width: 35px;}
+
+#minuteOptions {display: none;
+        list-style: none;}
+
+.row {margin: 0 auto;}
