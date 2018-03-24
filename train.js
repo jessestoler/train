@@ -10,6 +10,7 @@ $(document).ready(function(){
       };
       firebase.initializeApp(config);
       var database = firebase.database();
+      var saved = database.ref("Saved");
 
       
       var envy = moment().format("ddd MMMM D");
@@ -107,7 +108,7 @@ function black() {
 function a() {
 
 
-if ($("#trainName").val() == "" || $("#destination").val() == "" || $("#hourInput").val() == "" || $("#minuteInput").val() == "") {
+if ($("#trainName").val() == "" || $("#destination").val() == "" || $("#hourInput").val() == "" || isNaN($("#frequency").val()) || $("#minuteInput").val() == "") {
     alert("Please fill in every field to continue");
 }
 else{
@@ -118,7 +119,8 @@ var e = $("<div class='info row'>");
 var f = $("<div class='info row'>");
 
 var knives = $("#dayInput").val() + " 2018, " + $("#hourInput").val() + ":" + $("#minuteInput").val();
-var scatterbrain = moment(knives).fromNow(true);
+var scatterbrain = moment(knives).fromNow();
+var fb = saved.push();
 
 $("#funny").append(b);
 $("#piano").append(c);
@@ -134,7 +136,7 @@ f.html(scatterbrain);
 
 
 
-database.ref().set({
+fb.set({
     name: $("#trainName").val(), 
     destination: $("#destination").val(),
     frequency: $("#frequency").val(),
