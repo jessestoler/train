@@ -16,12 +16,14 @@ button {margin-left: 15px;
     margin-top: 25px;
     padding-bottom: 15px;}
 
-#dayInput {height: 35px;
-        font-size: 50%;
+#dayInput {font-size: 50%;
+        height: 35px;
         width: 95px;}
 
 #dayOptions {display: none;
         list-style: none;}
+
+#funny {display: block;}
 
 #header {background-color: brown;
         color: white;
@@ -54,12 +56,6 @@ input {height: 140%;
         width: 100%;}
 
 li {font-size: 80%;}
-
-#meridiemInput {height: 35px;
-        width: 35px;}
-
-#meridiemOptions {display: none;
-        list-style: none;}
 
 #minuteInput {height: 35px;
         width: 35px;}

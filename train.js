@@ -9,148 +9,150 @@ $(document).ready(function(){
         messagingSenderId: "894944058013"
       };
       firebase.initializeApp(config);
+
       var database = firebase.database();
+      var fifth = moment().add(4, 'd').format("ddd MMMM D");
+      var first = moment().format("ddd MMMM D");
+      var fourth = moment().add(3, 'd').format("ddd MMMM D");
       var saved = database.ref("Saved");
+      var second = moment().add(1, 'd').format("ddd MMMM D");
+      var seventh = moment().add(6, 'd').format("ddd MMMM D");
+      var sixth = moment().add(5, 'd').format("ddd MMMM D");
+      var third = moment().add(2, 'd').format("ddd MMMM D");
+      
+      schedule();
 
-      
-      var envy = moment().format("ddd MMMM D");
-      var gluttony = moment().add(1, 'd').format("ddd MMMM D");
-      var greed = moment().add(2, 'd').format("ddd MMMM D");
-      var lust = moment().add(3, 'd').format("ddd MMMM D");
-      var pride = moment().add(4, 'd').format("ddd MMMM D");
-      var sloth = moment().add(5, 'd').format("ddd MMMM D");
-      var wrath = moment().add(6, 'd').format("ddd MMMM D");
-      
-      
-      $("#dayOne").html(envy);
-      $("#dayTwo").html(gluttony);
-      $("#dayThree").html(greed);
-      $("#dayFour").html(lust);
-      $("#dayFive").html(pride);
-      $("#daySix").html(sloth);
-      $("#daySeven").html(wrath);
-      $("#dayOne").attr("data-option", envy);
-      $("#dayTwo").attr("data-option", gluttony);
-      $("#dayThree").attr("data-option", greed);
-      $("#dayFour").attr("data-option", lust);
-      $("#dayFive").attr("data-option", pride);
-      $("#daySix").attr("data-option", sloth);
-      $("#daySeven").attr("data-option", wrath);
+    
+      $("#dayOne").html(first);
+      $("#dayTwo").html(second);
+      $("#dayThree").html(third);
+      $("#dayFour").html(fourth);
+      $("#dayFive").html(fifth);
+      $("#daySix").html(sixth);
+      $("#daySeven").html(seventh);
+      $("#dayOne").attr("data-option", first);
+      $("#dayTwo").attr("data-option", second);
+      $("#dayThree").attr("data-option", third);
+      $("#dayFour").attr("data-option", fourth);
+      $("#dayFive").attr("data-option", fifth);
+      $("#daySix").attr("data-option", sixth);
+      $("#daySeven").attr("data-option", seventh);
       
       
+$("#day").on("click", dayList);
+$("#done").on("click", gather);
+$("#done").on("click", refresh);
+$("#done").on("click", schedule);
+$("#hour").on("click", hourList);
+$("#minute").on("click", minuteList);
+$(".seven").on("click", daySelection);
+$(".sixty").on("click", minuteSelection);
+$(".twentyfour").on("click", hourSelection);
 
-$("#done").on("click", a);
-$("#hour").on("click", black);
-$("#minute").on("click", hunting);
-
-$(".twentyfour").on("click", faust);
-$(".sixty").on("click", lotus);
-
-$(".seven").on("click", hand);
-$("#day").on("click", glove);
-
-function sinclair() {
-    var bad = moment().format('MMMM Do YYYY, h:mm a');
-    $("#ultraviolence").html(bad);
+function current() {
+    var present = moment().format('MMMM Do YYYY, h:mm a');
+    $("#rightNow").html(present);
 }
 
-setInterval(sinclair, 1000);
+setInterval(current, 1000);
 
-function hunting() {
-    $("#minuteOptions").css("display", "block");
-}
-
-
-
-function lotus() {
-    
-    var flower = $(this).attr("data-option");
-    $("#minuteInput").val(flower);
-    $("#minuteOptions").css("display", "none");
-}
-
-function hand() {
-    var smiths = $(this).attr("data-option");
-    $("#dayInput").val(smiths);
-    $("#dayOptions").css("display", "none");
-    
-    
-    
-    
-}
-
-function glove() {
+function dayList() {
    
     $("#dayOptions").css("display", "block");
-    
-    
-    
-}
+    }
 
-function faust() {
-    var arp = $(this).attr("data-option");
-    $("#hourInput").val(arp);
-    $("#hourOptions").css("display", "none");
-    
-    
-    
-    
-}
+function daySelection() {
+        var dayChoice = $(this).attr("data-option");
+        $("#dayInput").val(dayChoice);
+        $("#dayOptions").css("display", "none");
+        }
 
-function black() {
+
+function gather() {
+
+            if ($("#trainName").val() == "" || $("#destination").val() == "" || $("#hourInput").val() == "" || $("#frequency").val() == "" || isNaN($("#frequency").val()) || $("#minuteInput").val() == "") {
+                alert("Please fill in every field to continue");
+            }
+            
+            else{
+            var arrival = $("#dayInput").val() + " 2018, " + $("#hourInput").val() + ":" + $("#minuteInput").val();
+            var future = moment(arrival).fromNow();
+            var db = saved.push();
+            
+            
+            db.set({
+                name: $("#trainName").val(), 
+                destination: $("#destination").val(),
+                frequency: $("#frequency").val(),
+                time: arrival,
+                next: future
+              });
+            
+            }
+            
+            }
+
+function hourList() {
    
-    $("#hourOptions").css("display", "block");
-    
-    
-    
+                $("#hourOptions").css("display", "block");
+                }
+
+function hourSelection() {
+                    var hourChoice = $(this).attr("data-option");
+                    $("#hourInput").val(hourChoice);
+                    $("#hourOptions").css("display", "none");
+                    
+                }
+
+function minuteList() {
+                    $("#minuteOptions").css("display", "block");
+                }
+                
+                
+                
+function minuteSelection() {
+                    
+                    var minuteChoice = $(this).attr("data-option");
+                    $("#minuteInput").val(minuteChoice);
+                    $("#minuteOptions").css("display", "none");
+                }
+
+
+
+function refresh() {
+    $(".stored").remove();
 }
 
-function a() {
+function schedule() {
 
-
-if ($("#trainName").val() == "" || $("#destination").val() == "" || $("#hourInput").val() == "" || isNaN($("#frequency").val()) || $("#minuteInput").val() == "") {
-    alert("Please fill in every field to continue");
-}
-else{
-var b = $("<div class='info row'>");
-var c = $("<div class='info row'>");
-var d = $("<div class='info row'>");
-var e = $("<div class='info row'>");
-var f = $("<div class='info row'>");
-
-var knives = $("#dayInput").val() + " 2018, " + $("#hourInput").val() + ":" + $("#minuteInput").val();
-var scatterbrain = moment(knives).fromNow();
-var fb = saved.push();
-
-$("#funny").append(b);
-$("#piano").append(c);
-$("#cache").append(d);
-$("#white").append(e);
-$("#amour").append(f);
-b.html($("#trainName").val());
-c.html($("#destination").val());
-d.html($("#frequency").val());
-e.html(knives);
-
-f.html(scatterbrain);
-
-
-
-fb.set({
-    name: $("#trainName").val(), 
-    destination: $("#destination").val(),
-    frequency: $("#frequency").val(),
-    time: knives
-  });
- 
-
+    var al = saved.orderByKey();
+   
+    al.once("value")
+    .then(function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        
+        
+          var key = childSnapshot.key;
+        var childData = childSnapshot.val();
+        var b = $("<div class='info row stored'>");
+          var c = $("<div class='info row stored'>");
+      var d = $("<div class='info row stored'>");
+      var e = $("<div class='info row stored'>");
+      var f = $("<div class='info row stored'>");
+      $("#ahn").append(b);
+  $("#deuh").append(c);
+  $("#twah").append(d);
+  $("#katr").append(e);
+  $("#sank").append(f);
+        b.html(childData.name);
+        c.html(childData.destination);
+        d.html(childData.frequency);
+        e.html(childData.time);
+        f.html(childData.next);
+       });
+      
+    });
 
 }
-
-
-
-}
-
-
 
 });
